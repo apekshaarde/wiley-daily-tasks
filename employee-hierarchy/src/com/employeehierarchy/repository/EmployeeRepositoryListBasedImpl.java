@@ -21,7 +21,7 @@ public class EmployeeRepositoryListBasedImpl implements EmployeeRepository {
         employees.add(employee);
     }
 
-    private void validateEmployee(Employee employee) {
+    private void validateEmployee(Employee employee) throws InvalidEmployeeInfoException{
         if(employee.getId() < 0){
             throw new InvalidEmployeeInfoException("employee id must be positive");
         }
