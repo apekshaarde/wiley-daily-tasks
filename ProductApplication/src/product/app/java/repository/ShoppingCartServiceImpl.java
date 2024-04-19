@@ -1,6 +1,7 @@
 package product.app.java.repository;
 
 import exception.DuplicateIDException;
+import exception.ProductNotFoundException;
 import product.app.java.model.Electronics;
 import product.app.java.model.Product;
 
@@ -54,7 +55,15 @@ public class ShoppingCartServiceImpl implements ShoppingCartRepository{
        return totalPrice;
     }
 
-    public void deleteProduct(int id) {
-
+    private void productNotFound(int id) throws ProductNotFoundException{
+        for(Product check : productList){
+            if(check.getProductId()!=id){
+                throw new ProductNotFoundException("Product Not Found");
+            }
+        }
+    }
+    public void deleteProduct(int id) throws ProductNotFoundException {
+            productNotFound(id);
+            productList.remove(id);
     }
 }

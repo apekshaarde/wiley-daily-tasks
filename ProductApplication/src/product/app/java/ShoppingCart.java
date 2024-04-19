@@ -1,6 +1,7 @@
 package product.app.java;
 
 import exception.DuplicateIDException;
+import exception.ProductNotFoundException;
 import product.app.java.model.Clothing;
 import product.app.java.model.Electronics;
 import product.app.java.repository.ShoppingCartRepository;
@@ -40,7 +41,7 @@ public class ShoppingCart {
                     System.out.println("Enter Quantity of Product : ");
                     int pQuantity = sc.nextInt();
 
-                    Electronics electronics = new Electronics(pId, pName,pPrice,pQuantity,pBrand,pWarrantyPeriod);
+                    Electronics electronics = new Electronics(pId,pName,pPrice,pQuantity,pBrand,pWarrantyPeriod);
                     try {
                             repository.addProduct(electronics);
                             System.out.println(electronics.getBrand()+" "+electronics.getProductName());
@@ -56,7 +57,13 @@ public class ShoppingCart {
                     repository.getTotalPrice();
                     break;
                 case 4:
-                    //repository.deleteProduct(pId);
+                    System.out.println("Enter ID to Delete Product:");
+                    int deleteId = sc.nextInt();
+                    try {
+                        repository.deleteProduct(deleteId);
+                    }catch (ProductNotFoundException e){
+                        System.err.println(e.getMessage());
+                    }
                     break;
                 default:
                     System.out.println("Invalid choice");

@@ -1,6 +1,7 @@
 package product.app.java.repository;
 
 import exception.DuplicateIDException;
+import exception.ProductNotFoundException;
 import product.app.java.model.Product;
 
 public interface ShoppingCartRepository {
@@ -11,5 +12,5 @@ public interface ShoppingCartRepository {
 
     public int getTotalPrice();
 
-    public void deleteProduct(int id);
+    public void deleteProduct(int id) throws ProductNotFoundException;
 }
