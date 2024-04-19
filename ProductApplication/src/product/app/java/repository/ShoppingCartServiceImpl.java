@@ -1,5 +1,7 @@
 package product.app.java.repository;
 
+import exception.DuplicateIDException;
+import product.app.java.model.Electronics;
 import product.app.java.model.Product;
 
 import java.util.ArrayList;
@@ -10,20 +12,37 @@ public class ShoppingCartServiceImpl implements ShoppingCartRepository{
     List<Product> productList;
 
     public ShoppingCartServiceImpl(){
+
         productList = new ArrayList<>();
     }
 
-    public void addProduct(Product product) {
+    private void checkProductAvailability(Product product) throws DuplicateIDException {
+        int productId = product.getProductId();
+        for(Product checkProd : productList){
+            if(checkProd.getProductId() == productId){
+                throw new DuplicateIDException("product is already available");
+            }
+        }
+
+    }
+    public void addProduct(Product product) throws DuplicateIDException {
+        checkProductAvailability(product);
         productList.add(product);
     }
 
     public void displayProduct() {
-        System.out.println(this.getClass().getSimpleName());
+        //System.out.println(this.getClass().getSimpleName());
         for(Product product : productList){
             System.out.println("Product ID : "+product.getProductId());
             System.out.println("Product Name : "+product.getProductName());
             System.out.println("Product Price : "+product.getPrice());
             System.out.println("Product Quantity In Stock : "+product.getQuantityInStock());
+
+            if(product instanceof Electronics){
+                Electronics electronics = (Electronics) product;
+                System.out.println("Brand : "+electronics.getBrand());
+                System.out.println("Warranty Period : "+electronics.getWarrantyPeriod());
+            }
         }
     }
 
@@ -33,5 +52,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartRepository{
            totalPrice += product.getPrice();
        }
        return totalPrice;
+    }
+
+    public void deleteProduct(int id) {
+
     }
 }
