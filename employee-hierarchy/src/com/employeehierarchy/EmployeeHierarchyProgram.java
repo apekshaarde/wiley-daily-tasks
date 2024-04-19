@@ -1,5 +1,6 @@
 package com.employeehierarchy;
 
+import com.employeehierarchy.exception.InvalidEmployeeInfoException;
 import com.employeehierarchy.model.*;
 import com.employeehierarchy.repository.EmployeeRepository;
 import com.employeehierarchy.repository.EmployeeRepositoryDBImpl;
