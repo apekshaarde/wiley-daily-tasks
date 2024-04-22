@@ -16,11 +16,6 @@ public class Account {
         return accountCount;
     }
 
-
-    public long getAccountNo() {
-        return accountNo;
-    }
-
     public Account(long accountNo, String customerName, double balance) {
         this.accountNo = accountNo;
         this.customerName = customerName;
@@ -30,6 +25,10 @@ public class Account {
 
     public void setAccountNo(long accountNo) {
         this.accountNo = accountNo;
+    }
+
+    public long getAccountNo() {
+        return accountNo;
     }
 
     public String getCustomerName() {
