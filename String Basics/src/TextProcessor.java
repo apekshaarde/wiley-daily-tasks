@@ -14,7 +14,7 @@ public class TextProcessor {
 
     // Functionality: Extracting lines from a multi-line string
     public static void extractLines(String multiLineStr) {
-        multiLineStr.lines();
+        multiLineStr.lines().forEach(line-> System.out.println(line));
     }
 
     // Functionality: String formatting
