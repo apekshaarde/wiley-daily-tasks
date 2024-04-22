@@ -7,12 +7,18 @@ public class StringOperations {
         System.out.println("Enter the Text to count Words : ");
         String text = sc.nextLine();
 
+        String str= """
+                The String class in Java represents a sequence of characters.
+                Strings in Java are immutable, meaning their values cannot be changed after they are created.
+                 This immutability ensures thread safety and allows strings to be used as constants.
+                """;
+
         int textCount = countWords(text);
         System.out.println("Count : "+textCount);
 
         String line = "This is\na\nsample text.";
 
-        int checkLineCount = countLines(line);
+        int checkLineCount = countLines(str);
         System.out.println("Line Count : "+checkLineCount);
 
         System.out.println("Enter text to reverse: ");
@@ -24,7 +30,7 @@ public class StringOperations {
         System.out.println("Enter the String to remove duplicates : ");
         String rDuplicates = sc.nextLine();
 
-        String nonDuplicate =removeDuplicates(rDuplicates);
+        String nonDuplicate =removeDuplicates(str);
         System.out.println("String after removing duplicates : "+nonDuplicate);
     }
     private static int countWords(String text) {
@@ -58,16 +64,16 @@ public class StringOperations {
     }
 
     private static String removeDuplicates(String text) {
-            char ch[] = text.toCharArray();
+            String ch[] = text.split(" ");
             String res="";
             for(int i=0;i<ch.length;i++){
                 for (int j=(i+1);j<ch.length;j++){
                     if(ch[i] == ch[j]){
-                        ch[j] = ' ';
+                        ch[j] = " ";
                     }
                 }
-                if(ch[i] != ' '){
-                    res += ch[i];
+                if(ch[i] != " "){
+                    res += ch[i]+" ";
                 }
             }
             return res;
