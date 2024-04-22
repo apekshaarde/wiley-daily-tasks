@@ -14,6 +14,11 @@ public class AccountManagementApp {
 
         Account account2 = new Account(214577228765L, "Peter", 1000);
 
+        Account account3 = new Account(214577228765L, "Peter", 1000);
+        Account account4 = new Account();
+
+
+
         System.out.println("created Accounts count :  "+Account.getNumberOfAccounts());
 
         System.out.println("Account 1 Info : ");

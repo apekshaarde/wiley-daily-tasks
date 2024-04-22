@@ -25,6 +25,7 @@ public class Account {
         this.accountNo = accountNo;
         this.customerName = customerName;
         this.balance = balance;
+        accountCount++;
     }
 
     public void setAccountNo(long accountNo) {
