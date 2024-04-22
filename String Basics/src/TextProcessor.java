@@ -14,30 +14,18 @@ public class TextProcessor {
 
     // Functionality: Extracting lines from a multi-line string
     public static void extractLines(String multiLineStr) {
-        String lines[] = multiLineStr.split("\\n");
-
-        for(String str : lines){
-            System.out.println(str);
-        }
+        multiLineStr.lines();
     }
 
     // Functionality: String formatting
     public static String formatString(String format, Object... args) {
-            return String.format(format,args);
+            return format.formatted(args);
     }
 
 
     // Functionality: String indentation
     public static String indentString(String str, int n) {
-            StringBuilder sb = new StringBuilder();
-
-            for(int i=0;i<n;i++){
-                sb.append(" ");
-            }
-
-            sb.append(str);
-
-            return sb.toString();
+           return str.indent(n);
     }
 
 
