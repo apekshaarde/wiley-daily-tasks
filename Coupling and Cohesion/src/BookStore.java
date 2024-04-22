@@ -1,3 +1,4 @@
+import com.invension.app.exception.BookAlreadyPresent;
 import com.invension.app.exception.BookNotFound;
 import com.invension.app.model.Book;
 import com.invension.app.service.Inventory;
@@ -27,17 +28,16 @@ public class BookStore {
 
         //Adding books by Author Name to shopping cart
         List<Book> addBooksByAuthor = inventory.findBooksByAuthor("XYZ");
-        if(addBooksByAuthor!=null){
-            for(Book book : addBooksByAuthor){
+        if (addBooksByAuthor != null) {
+            for (Book book : addBooksByAuthor) {
                 shoppingCart.addItem(book);
             }
         }
 
         //Find books by author name and add into shopping cart
-        for(Book book : inventory.findBooksByAuthor("Yashavant P Kanetkar")){
+        for (Book book : inventory.findBooksByAuthor("Yashavant P Kanetkar")) {
             shoppingCart.addItem(book);
         }
-
 
         //Remove books by Author Name
         List<Book> remove = inventory.findBooksByAuthor("XYZ");

@@ -1,5 +1,6 @@
 package com.invension.app.service;
 
+import com.invension.app.exception.BookAlreadyPresent;
 import com.invension.app.exception.BookNotFound;
 import com.invension.app.model.Book;
 
@@ -23,7 +24,17 @@ public class ShoppingCartImpl implements ShoppingCart{
 
     }
 
-    public void addItem(Book book) {
+//    public void bookAlreadyPresent(Book book) throws BookAlreadyPresent{
+//        for(Book checkBook : items){
+//            if(checkBook.getTitle().equalsIgnoreCase(book.getTitle())){
+//                return;
+//            }
+//        }
+//        throw new BookAlreadyPresent("book is already present in your cart");
+//    }
+
+    public void addItem(Book book){
+        //bookAlreadyPresent(book);
         items.add(book);
     }
 
@@ -33,7 +44,7 @@ public class ShoppingCartImpl implements ShoppingCart{
                 return;
             }
         }
-        throw new BookNotFound("Not present");
+        throw new BookNotFound("Book Not Found");
     }
     public void removeItem(Book book)  throws BookNotFound {
         bookPresentOrNot(book);
