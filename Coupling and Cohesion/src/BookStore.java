@@ -1,3 +1,4 @@
+import com.invension.app.exception.BookNotFound;
 import com.invension.app.model.Book;
 import com.invension.app.service.Inventory;
 import com.invension.app.service.InventoryImpl;
@@ -57,5 +58,12 @@ public class BookStore {
         //Total Price of Shopping cart
         System.out.println("Total Price : "+shoppingCart.calculateTotalPrice());
         shoppingCart.displayItems();
+
+        //check custom exception is working or not
+        try {
+            shoppingCart.removeItem(new Book("CCC", "MMM", 900));
+        }catch (BookNotFound e){
+            System.err.println(e.getMessage());
+        }
     }
 }

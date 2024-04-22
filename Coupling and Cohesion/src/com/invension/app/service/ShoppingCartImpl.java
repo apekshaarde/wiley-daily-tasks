@@ -1,5 +1,6 @@
 package com.invension.app.service;
 
+import com.invension.app.exception.BookNotFound;
 import com.invension.app.model.Book;
 
 import java.util.ArrayList;
@@ -26,7 +27,16 @@ public class ShoppingCartImpl implements ShoppingCart{
         items.add(book);
     }
 
-    public void removeItem(Book book) {
+    private void bookPresentOrNot(Book book) throws BookNotFound {
+        for(Book findBook : items){
+            if(findBook.getTitle().equalsIgnoreCase(book.getTitle())){
+                return;
+            }
+        }
+        throw new BookNotFound("Not present");
+    }
+    public void removeItem(Book book)  throws BookNotFound {
+        bookPresentOrNot(book);
         items.remove(book);
     }
 
