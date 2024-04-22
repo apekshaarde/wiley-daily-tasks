@@ -3,9 +3,16 @@ import java.util.Scanner;
 public class StringOperations {
     public static void main(String[] args) {
 
+        String str1 = "welcome";
+        System.out.println(str1.indexOf('c'));
+
+        String str2 = "Welcome".replaceAll("Welcome", "Hello");
+        System.out.println(str2);
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the Text to count Words : ");
         String text = sc.nextLine();
+        String s = new String("Hello");
 
         String str= """
                 The String class in Java represents a sequence of characters.
