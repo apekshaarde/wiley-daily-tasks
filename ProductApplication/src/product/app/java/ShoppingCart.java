@@ -54,7 +54,8 @@ public class ShoppingCart {
                     repository.displayProduct();
                     break;
                 case 3:
-                    repository.getTotalPrice();
+                    System.out.println("Total Price --->"+repository.getTotalPrice());
+
                     break;
                 case 4:
                     System.out.println("Enter ID to Delete Product:");

@@ -19,12 +19,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartRepository{
 
     private void checkProductAvailability(Product product) throws DuplicateIDException {
         int productId = product.getProductId();
-        for(Product checkProd : productList){
-            if(checkProd.getProductId() == productId){
+        for (Product checkProd : productList) {
+            if (checkProd.getProductId() == productId) {
                 throw new DuplicateIDException("product is already available");
             }
         }
-
     }
     public void addProduct(Product product) throws DuplicateIDException {
         checkProductAvailability(product);
