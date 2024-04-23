@@ -73,6 +73,11 @@ public class ShoppingCart {
                     }
                     break;
                 case 5:
+                    //for single object
+//                    Product prod = new Product(103,"TV",50000,1);
+//                    serializedObject(prod);
+
+                    //serialization using list of objects
                     List<Product> list=new ArrayList<>();
                     list.add(new Product(100,"Laptop",80000,2));
                     list.add(new Product(100,"Laptop",80000,2));
