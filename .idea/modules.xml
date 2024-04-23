@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ExceptionHandlingApp/ExceptionHandlingApp.iml" filepath="$PROJECT_DIR$/ExceptionHandlingApp/ExceptionHandlingApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProductApplication/ProductApplication.iml" filepath="$PROJECT_DIR$/ProductApplication/ProductApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/my-idea-workspace.iml" filepath="$PROJECT_DIR$/.idea/my-idea-workspace.iml" />
+    </modules>
+  </component>
+</project>
