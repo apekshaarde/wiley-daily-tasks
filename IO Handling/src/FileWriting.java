@@ -36,12 +36,16 @@ public class FileWriting {
                         writer.close();
                         break;
                     case 2:
+                        try(
                         Reader reader = new FileReader("output.txt");
-                        int res;
-                        while((res= reader.read())!=-1){
-                            System.out.print((char)res);
+                        ) {
+                            int res;
+                            while ((res = reader.read()) != -1) {
+                                System.out.print((char) res);
+                            }
+                        }catch (IOException ex){
+                            System.err.println(ex.getMessage());
                         }
-                        reader.close();
                         break;
                     default:
                         System.out.println("invalid choice");
