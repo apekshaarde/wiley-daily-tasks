@@ -9,6 +9,8 @@ import product.app.java.repository.ShoppingCartRepository;
 import product.app.java.repository.ShoppingCartServiceImpl;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -71,12 +73,19 @@ public class ShoppingCart {
                     }
                     break;
                 case 5:
-                    Product product = new Product(100,"Laptop",80000,2);
-                    serializedObject(product);
+                    List<Product> list=new ArrayList<>();
+                    list.add(new Product(100,"Laptop",80000,2));
+                    list.add(new Product(100,"Laptop",80000,2));
+                    list.add(new Product(100,"Laptop",80000,2));
+
+                    serializedObject(list);
 
                     File file = new File("Product.ser");
                     Product deserializedProduct = (Product) deSerializedObject(file.getName());
-                    System.out.println(deserializedProduct);
+                    for(int i=0;i<list.size();i++){
+                        System.out.println(deserializedProduct);
+                    }
+
                     break;
                 default:
                     System.out.println("Invalid choice");
