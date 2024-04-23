@@ -4,9 +4,12 @@ import exception.DuplicateIDException;
 import exception.ProductNotFoundException;
 import product.app.java.model.Clothing;
 import product.app.java.model.Electronics;
+import product.app.java.model.Product;
 import product.app.java.repository.ShoppingCartRepository;
 import product.app.java.repository.ShoppingCartServiceImpl;
 
+import java.io.*;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ShoppingCart {
@@ -20,6 +23,7 @@ public class ShoppingCart {
             System.out.println("2:Show Product:");
             System.out.println("3:Calculate Total Bill:");
             System.out.println("4:Delete Product:");
+            System.out.println("5:Object Serialization and Deserialization:");
             System.out.println("Enter Choice:");
             int ch = sc.nextInt();
 
@@ -66,6 +70,14 @@ public class ShoppingCart {
                         System.err.println(e.getMessage());
                     }
                     break;
+                case 5:
+                    Product product = new Product(100,"Laptop",80000,2);
+                    serializedObject(product);
+
+                    File file = new File("Product.ser");
+                    Product deserializedProduct = (Product) deSerializedObject(file.getName());
+                    System.out.println(deserializedProduct);
+                    break;
                 default:
                     System.out.println("Invalid choice");
 
@@ -98,5 +110,28 @@ public class ShoppingCart {
 
      //   System.out.println("Total Price --->"+repository.getTotalPrice());
 
+    }
+
+    public static void serializedObject(Object object){
+        try(
+                OutputStream outputStream = new FileOutputStream(object.getClass().getSimpleName()+".ser");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                ){
+                 objectOutputStream.writeObject(object);
+
+        }catch (IOException ex){
+            System.err.println(ex);
+        }
+    }
+
+    public static Object deSerializedObject(String fileName){
+        try(
+                InputStream objectInput = new FileInputStream(fileName);
+                ObjectInputStream objectInputStream = new ObjectInputStream(objectInput);
+                ){
+                    return objectInputStream.readObject();
+        }catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
     }
 }

@@ -9,7 +9,7 @@ public class RandomAccessFileEx {
                 RandomAccessFile randomAccessFile = new RandomAccessFile("output.txt","rw")){
 
             do {
-                System.out.println("1.Enter text to written : \n Want to add more?(y/n)");
+                System.out.println("\n1.Enter text to written : \n Want to add more?(y/n)");
                 System.out.println("2.Read contents of file : ");
                 System.out.println("Enter your choice : ");
                 int ch = sc.nextInt();
@@ -34,13 +34,22 @@ public class RandomAccessFileEx {
                         }
                         break;
                     case 2:
-                            randomAccessFile.seek(0);
-                            String res;
-                            while ((res = randomAccessFile.readUTF()) != null) {
-                                if(!res.equals(""))
-                                    System.out.print(res);
-                            }
+                        randomAccessFile.seek(0);
+                           try{
+                               while (true) {
+                                   String res = randomAccessFile.readUTF();
+                                   if (res != null && !res.equals("")) {
+                                       System.out.print(res);
+                                   }
+                               }
+                           }catch (EOFException ex){
+                               //System.err.println(ex.getMessage());
+                           }
                         break;
+                    case 3:
+                        Console console = System.console();
+
+                        //console.printf("Enter String :");
                     default:
                         System.out.println("invalid choice");
                 }

@@ -1,6 +1,8 @@
 package product.app.java.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
     private int productId;
     private String productName;
@@ -51,5 +53,15 @@ public class Product {
         System.out.println("Product Name : "+productName);
         System.out.println("Product Price : "+price);
         System.out.println("Product Quantity In Stock : "+quantityInStock);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", price=" + price +
+                ", quantityInStock=" + quantityInStock +
+                '}';
     }
 }
