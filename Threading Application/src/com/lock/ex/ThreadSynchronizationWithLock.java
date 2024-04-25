@@ -21,7 +21,8 @@ class MyBankAccount {
         System.out.println("Depositing " + amount + "₹");
 
         lock1.lock();
-        lock2.lock();
+        Sysem.out.println()
+        
 
         double newBalance = balance + amount;
 
@@ -30,6 +31,10 @@ class MyBankAccount {
         } catch (InterruptedException ex) {
             System.err.println(ex.getMessage());
         }
+
+        lock2.lock();
+
+        
 
         balance = newBalance;
 
@@ -43,7 +48,7 @@ class MyBankAccount {
         System.out.println("Withdrawing " + amount + "₹");
 
         lock2.lock();
-        lock1.lock();
+        
 
         if (amount > balance) {
             System.out.println("Insufficient Balance. Please deposit first");
@@ -53,6 +58,9 @@ class MyBankAccount {
                 throw new RuntimeException(e);
             }
         }
+
+        lock1.lock();
+        
 
         double newBalance = balance - amount;
 
@@ -102,7 +110,7 @@ class MyWithdrawThread extends Thread {
 public class ThreadSynchronizationWithLock {
 
     public static void main(String[] args) {
-        MyBankAccount account = new MyBankAccount(0);
+        MyBankAccount account = new MyBankAccount(10000);
 
         MyDepositThread thread1 = new MyDepositThread(account, 5000);
         MyWithdrawThread thread2 = new MyWithdrawThread(account, 2000);
