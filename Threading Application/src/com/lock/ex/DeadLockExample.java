@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class DeadLockExample {
 
+
     private Lock lock1 = new ReentrantLock(true);
     private Lock lock2 = new ReentrantLock(true);
 
