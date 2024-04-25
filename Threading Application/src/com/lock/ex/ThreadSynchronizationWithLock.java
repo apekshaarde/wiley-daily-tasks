@@ -33,8 +33,8 @@ class MyBankAccount {
 
         balance = newBalance;
 
-        lock2.unlock();
         lock1.unlock();
+        lock2.unlock();
 
         System.out.println("Balance after depositing : " + balance + "₹");
     }
@@ -55,6 +55,12 @@ class MyBankAccount {
         }
 
         double newBalance = balance - amount;
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            System.err.println(ex.getMessage());
+        }
 
         balance = newBalance;
 
