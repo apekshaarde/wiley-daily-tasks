@@ -26,7 +26,7 @@ public class LambdaExpressionWithCollection {
             String words[] = s.split(" ");
             StringBuilder getInitials = new StringBuilder();
             for (String word : words) {
-                getInitials.append(word.charAt(0));
+                getInitials.append(word.charAt(0)+".");
             }
             shortNames.add(getInitials.toString());
         }
