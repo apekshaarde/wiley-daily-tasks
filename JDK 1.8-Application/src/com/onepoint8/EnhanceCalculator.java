@@ -19,6 +19,9 @@ public class EnhanceCalculator {
 
             var division = calculate(1000,500 ,(a,b)-> a/b);
             System.out.println("Division is : "+division);
+
+            var power = calculate(2,3,(a,b)-> (int)Math.pow(a,b));
+            System.out.println("Power of Numbers is : "+power);
     }
 }
 
