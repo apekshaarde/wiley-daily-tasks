@@ -26,10 +26,9 @@ public class LambdaExpressionExample {
 
         CheckStringBlankOrNot checkStringBlankOrNot = (str) -> str.isBlank();
         boolean result = checkStringBlankOrNot.checkString(" GHJH");
-        if(result){
+        if(result)
             System.out.println("Blank");
-        }else{
+        else
             System.out.println("Not blank");
-        }
     }
 }
