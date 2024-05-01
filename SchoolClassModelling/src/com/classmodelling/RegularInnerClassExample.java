@@ -2,7 +2,11 @@ package com.classmodelling;
 
 public class RegularInnerClassExample {
     public static void main(String[] args) {
-        new Outer().func();
+       // new Outer().func();
+
+        Outer out = new Outer();
+        Outer.Inner ref = out.new Inner();
+        ref.in();
     }
 }
 
