@@ -45,6 +45,14 @@ public class Stack<T> {
     }
 
     public String toString() {
-        return Arrays.toString(stackArray);
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i <= top; i++) {
+            result.append(stackArray[i]);
+            if (i < top) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
     }
 }

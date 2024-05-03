@@ -25,6 +25,12 @@ public class StackExample {
         System.out.println(myStack.pop());
         System.out.println(myStack.pop());
 
+        System.out.println("==Stack Data after POP Operation===");
+        if(!myStack.isEmpty()){
+            System.out.println(myStack);
+        }
+
+        System.out.println("Peek element of Stack is : "+myStack.peek());
 
 
 //        while (!stack.isEmpty()) {
