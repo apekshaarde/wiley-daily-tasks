@@ -2,6 +2,7 @@ package com.stack.ex;
 public class QueueExample {
     public static void main(String[] args) {
         Queue<Integer> myQueue = new Queue<>(5);
+
         myQueue.insert(1);
         myQueue.insert(2);
         myQueue.insert(3);
@@ -9,6 +10,8 @@ public class QueueExample {
         System.out.println("Peek: " + myQueue.peek());
         System.out.println("Removed: " + myQueue.remove());
         System.out.println("Peek: " + myQueue.peek());
+
+       // System.out.println(myQueue);
 
         Queue<String> stringQueue = new Queue<>(5);
         stringQueue.insert("John");
