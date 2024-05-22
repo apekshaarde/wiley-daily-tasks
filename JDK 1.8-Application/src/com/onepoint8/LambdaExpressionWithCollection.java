@@ -39,9 +39,16 @@ public class LambdaExpressionWithCollection {
         List<String> list = List.of("Harsh Kumar","Virat Kohli","Mahendra Singh Dhoni","Akash","Karan Chopra");
 
         List<String> validNames = getValidNames(list);
-        validNames.forEach(v-> System.out.println(v));
+        //validNames.forEach(v-> System.out.println(v));
 
-        List<String> shortNamesList = getShortNames(list);
+        List<String> shortNamesList = getShortNames(validNames);
+       // shortNamesList.forEach(v-> System.out.println(v));
+
         shortNamesList.forEach(v-> System.out.println(v));
+
+        List<Integer> nums = List.of(2,-3,5,-4,11,-6,-44,77);
+
+        nums.stream().filter(n-> n>=0);
     }
+
 }
