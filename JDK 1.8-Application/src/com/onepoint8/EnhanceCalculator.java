@@ -17,8 +17,15 @@ public class EnhanceCalculator {
             var multiply = calculate(5,4,(a,b)->a*b);
             System.out.println("Multiplication is : "+multiply);
 
-            var division = calculate(1000,500 ,(a,b)-> a/b);
-            System.out.println("Division is : "+division);
+//            var division = calculate(1000,500 ,(a,b)-> a/b);
+//            System.out.println("Division is : "+division);
+
+            try {
+                var division = calculate(1000, 0, (a, b) -> a / b);
+                System.out.println("Division is : " + division);
+            } catch (ArithmeticException e) {
+                System.out.println("Cannot divide by zero");
+            }
 
             var power = calculate(2,3,(a,b)-> (int)Math.pow(a,b));
             System.out.println("Power of Numbers is : "+power);
