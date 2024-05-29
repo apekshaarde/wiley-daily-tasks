@@ -1,6 +1,7 @@
 package com.todo.application.service;
 
 import com.todo.application.dto.TaskDto;
+import com.todo.application.exception.RecordNotFoundException;
 import com.todo.application.model.Task;
 import com.todo.application.repository.ToDoRepository;
 import com.todo.application.repository.ToDoRepositoryImpl;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class ToDoServiceImpl implements ToDoService{
 
     private ToDoRepository repository;
@@ -31,7 +32,8 @@ public class ToDoServiceImpl implements ToDoService{
     }
 
     public TaskDto getTasksByTitle(String title){
-        return repository.getTasksByTitle(title).map(ToDoToUtil::convertToTaskDto).orElse(null);
+        return repository.getTasksByTitle(title).map(ToDoToUtil::convertToTaskDto)
+                .orElseThrow(()->new RecordNotFoundException("Record with title "+title+" not found"));
     }
 
     public TaskDto getTasksByID(int id) {
@@ -45,5 +47,10 @@ public class ToDoServiceImpl implements ToDoService{
 
     public void deleteById(int id){
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<TaskDto> findCompletedTasks() {
+        return null;
     }
 }

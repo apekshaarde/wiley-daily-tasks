@@ -1,8 +1,6 @@
 package com.todo.application.repository;
 
-
 import com.todo.application.model.Task;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.Optional;

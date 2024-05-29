@@ -12,11 +12,13 @@ public interface ToDoService {
 
     public TaskDto saveTask(TaskDto taskDto);
 
-    public TaskDto getTasksByTitle(String title);
+    TaskDto getTasksByTitle(String title);
 
     public TaskDto getTasksByID(int id);
 
     public TaskDto updateTask(int id,TaskDto taskDto);
 
     public void deleteById(int id);
+
+    public List<TaskDto> findCompletedTasks();
 }

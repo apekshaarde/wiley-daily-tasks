@@ -19,8 +19,19 @@ public class GlobalExceptionHandler {
         body.put("status", HttpStatus.NOT_FOUND.value());
         body.put("error", "Not Found");
         body.put("message", ex.getMessage());
-        body.put("path", "/api/v1/task/");
+        body.put("path", "api/v1/jpa-tasks/");
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DuplicateEntryException.class)
+    public ResponseEntity<Map<String,Object>> handleDuplicateEntryException(DuplicateEntryException ex){
+        Map<String,Object> map = new HashMap<>();
+        map.put("timestamp",LocalDateTime.now());
+        map.put("status",HttpStatus.CONFLICT.value());
+        map.put("error","Duplicate Entry");
+        map.put("message",ex.getMessage());
+        map.put("path", "api/v1/jpa-tasks/");
+        return new ResponseEntity<>(map,HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
@@ -30,7 +41,7 @@ public class GlobalExceptionHandler {
         body.put("status", HttpStatus.NOT_FOUND.value());
         body.put("error", "Not Found");
         body.put("message", "Record not found");
-        body.put("path", "/api/v1/task/");
+        body.put("path", "api/v1/jpa-tasks/");
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
@@ -41,7 +52,7 @@ public class GlobalExceptionHandler {
         body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         body.put("error", "ID NOT FOUND");
         body.put("message", ex.getClass().getSimpleName());
-        body.put("path", "/api/v1/task/");
+        body.put("path", "api/v1/jpa-tasks//");
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
