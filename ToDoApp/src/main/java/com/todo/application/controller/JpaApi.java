@@ -4,6 +4,7 @@ import com.todo.application.dto.TaskDto;
 import com.todo.application.service.ToDoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/jpa-tasks/")
+@RequestMapping(value = "api/v1/jpa-tasks")
+@CrossOrigin(origins = "http://127.0.0.1:5500/")
 public class JpaApi {
 
     private ToDoService service;
@@ -22,6 +24,7 @@ public class JpaApi {
     }
 
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<TaskDto> saveTasks(@RequestBody @Valid TaskDto taskDto){
         TaskDto dto = service.saveTask(taskDto);
         if(dto != null){
