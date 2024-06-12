@@ -35,7 +35,7 @@ public class ToDoJpaServiceImpl implements ToDoService{
     public TaskDto getTasksByTitle(String title) {
         return repository.findTaskByTitle(title)
                 .map(ToDoToUtil::convertToTaskDto)
-                .orElseThrow(()->new RecordNotFoundException("Record with title "+title+" Not Found"));
+                .orElse(null);
     }
 
     public TaskDto getTasksByID(int id) {

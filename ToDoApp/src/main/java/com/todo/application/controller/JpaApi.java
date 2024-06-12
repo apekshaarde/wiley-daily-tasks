@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/jpa-tasks")
-@CrossOrigin(origins = "http://127.0.0.1:5500/")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class JpaApi {
 
     private ToDoService service;
@@ -45,10 +45,9 @@ public class JpaApi {
     @GetMapping("/title/{title}")
     public ResponseEntity<TaskDto> getTaskByTitle(@PathVariable String title){
         TaskDto taskDto = service.getTasksByTitle(title);
-        if(taskDto != null){
+
             return new ResponseEntity<>(taskDto,HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
     @GetMapping("/id/{id}")
@@ -70,7 +69,7 @@ public class JpaApi {
         return new ResponseEntity<>(updatedTask, HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteById/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteById(@PathVariable int id){
         service.deleteById(id);

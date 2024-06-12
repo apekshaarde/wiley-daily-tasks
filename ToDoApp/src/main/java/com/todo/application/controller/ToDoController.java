@@ -69,7 +69,7 @@ public class ToDoController {
             return new ResponseEntity<>(updatedTask, HttpStatus.OK);
         }
 
-        @DeleteMapping("/deleteById/{id}")
+        @DeleteMapping("/{id}")
         @ResponseStatus(HttpStatus.OK)
         public void deleteById(@PathVariable int id){
                 service.deleteById(id);
